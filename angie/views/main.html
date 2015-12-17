@@ -1,0 +1,19 @@
+
+
+
+
+
+    <img src="images/crowd.png"/>
+    <p> </p>
+
+    <label ng-repeat="role in roles">
+        <input type="checkbox"
+               name="selectedRoles[]"
+               ng-checked="selection.indexOf(role) > -1"
+               ng-click="toggleSelection(role)"
+                /> {{role }}
+    </label>
+
+    <p> </p>
+
+

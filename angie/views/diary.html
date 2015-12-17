@@ -1,0 +1,100 @@
+<!--<h2>Time evidence</h2>-->
+<!--&lt;!&ndash;<div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span ng-show="isTeamLead">&ndash;&gt;-->
+    <!--&lt;!&ndash;Team: <select&ndash;&gt;-->
+            <!--&lt;!&ndash;ng-options="member.id as member.firstName + ' ' + member.lastName for member in members"&ndash;&gt;-->
+            <!--&lt;!&ndash;ng-model="memberId" ng-change="LoadDiary(memberId)"></select>&ndash;&gt;-->
+    <!--&lt;!&ndash;</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;...|...&ndash;&gt;-->
+    <!--&lt;!&ndash;<span>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#/diary/1">JAN</a> |&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#/diary/2">FEB</a> |&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#/diary/3">MAR</a> |&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#/diary/4">APR</a> |&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#/diary/5">MAJ</a> |&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#/diary/6">JUN</a> |&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#/diary/7">JUL</a> |&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#/diary/8">AVG</a> |&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#/diary/9">SEP</a> |&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#/diary/10">OKT</a> |&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#/diary/11 ">NOV</a> |&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="#/diary/12">DEC</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--<div class="btn-group" dropdown is-open="status.isopen">-->
+    <!--<button type="button" class="btn btn-sm btn-success dropdown-toggle" dropdown-toggle ng-disabled="disabled">-->
+        <!--Select month <span class="caret"></span>-->
+    <!--</button>-->
+    <!--<ul class="dropdown-menu" role="menu">-->
+        <!--<li><a href="#/diary/1">January</a></li>-->
+        <!--<li><a href="#/diary/2">February</a></li>-->
+        <!--<li><a href="#/diary/3">March</a></li>-->
+        <!--<li><a href="#/diary/4">April</a></li>-->
+        <!--<li><a href="#/diary/5">May</a></li>-->
+        <!--<li><a href="#/diary/6">June</a></li>-->
+        <!--<li><a href="#/diary/7">July</a></li>-->
+        <!--<li><a href="#/diary/8">August</a></li>-->
+        <!--<li><a href="#/diary/9">September</a></li>-->
+        <!--<li><a href="#/diary/10">October</a></li>-->
+        <!--<li><a href="#/diary/11">November</a></li>-->
+        <!--<li><a href="#/diary/12">December</a></li>-->
+    <!--</ul>-->
+<!--</div>-->
+        <!--<hr>-->
+<!--<p>-->
+    <!--Employee: {{ month.person }}<br>-->
+    <!--Period: {{ month.month }} / {{ month.year }}<br>-->
+    <!--Total of {{ month.totalHours }}, {{ month.ptoDays }} PTO.-->
+<!--</p>-->
+
+
+<!--<current-day style="border:1px silver solid">-->
+    <!--{{ currentDay.day }}: {{ currentDay.type }}-->
+    <!--<div ng-repeat="detail in currentDay.details">-->
+        <!--{{ detail.time }} | {{ detail.project }} :  {{ detail.note }}-->
+    <!--</div>-->
+<!--</current-day>-->
+
+
+
+
+<!--<div ng-repeat="days in month.diary">-->
+    <!--{{ days.day }}.-->
+    <!--<a href="#/diary/{{ month.month }}" ng-click="moveDetails(days)">{{ days.type }}</a> |-->
+    <!--{{ days.time }} | {{ days.note }}-->
+<!--</div>-->
+
+<div class="pull-left">
+    <h2>{{ monthData.person }}</h2>
+    <div>
+        <h4>Period: {{ monthData.month }} / {{ monthData.year }}</h4>
+        <h4>{{ monthData.totalHours }} hours<br>{{ monthData.ptoDays }} PTO days.</h4>
+        <hr>
+    </div>
+</div>
+
+<div ng-show="isTeamLead" class="pull-right" style="margin-left:24px">
+    Team: <select class="btn btn-primary"
+                  ng-model="memberId"
+                  ng-options="member.id as member.firstName + ' ' + member.lastName for member in members"
+                  ng-change="chgMember(memberId)"></select>
+</div>
+
+<div class="pull-right">
+    Month: <select class="btn btn-primary"
+                   ng-model="selMonth"
+                   ng-options="months.indexOf(selMonth) as selMonth for selMonth in months"
+                   ng-change="chgMonth(selMonth)"></select>
+</div>
+
+<div class="diary">
+    <day-diary ng-repeat="day in monthData.diary">
+        <div class="dayBody box_{{ day.type }}">
+            <div class="dayHeader {{ day.type }}" ng-show="day.type != 'past'">
+                <div class="dayDate">{{ day.day }}</div>
+                <div class="dayLink"><a href="" title="{{ day.note }}" ng-click="open(day)"><img src="images/diary.png"></a></div>
+            </div>
+            <div class="time" ng-if="day.time!='0:00'">{{ day.time }}</div>
+        </div>
+    </day-diary>
+</div>

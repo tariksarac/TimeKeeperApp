@@ -1,0 +1,37 @@
+<div class="modal-header" style="display:table; width:100%">
+    <h3 class="modal-title pull-left">{{ currentMonth.person }}</h3>
+    <h3 class="modal-title pull-right">{{ currentDay.date }}</h3>
+</div>
+
+<div class="modal-body">
+    <b>{{ currentMonth.personId }} / {{ currentDay.id }}</b>
+    <div ng-repeat="detail in currentDay.details">
+        <detail>
+            <div class="rowForm">
+                <select ng-options="project.id as project.name for project in projects"
+                        ng-model="detail.projectId"></select>
+                <input type="text" ng-model="detail.time" style="width:40px">
+                <input type="text" ng-model="detail.note" style="width:560px">
+                <button class="btn btn-link" ng-click="update(detail)"><img src="images/check.png"></button>
+                <button class="btn btn-link" ng-click="delete(detail)"><img src="images/dell.png"></button>
+            </div>
+        </detail>
+    </div>
+    <detail>
+        <div class="rowForm">
+            <select ng-options="project.id as project.name for project in projects"
+                    ng-model="newdet.projectId"></select>
+            <input type="text" ng-model="newdet.time" style="width:40px">
+            <input type="text" ng-model="newdet.note" style="width:560px">
+            <button class="btn btn-link" ng-click="insert(newdet)"><img src="images/check.png"></button>
+        </div>
+    </detail>
+</div>
+
+<div class="modal-footer">
+    <div ng-show="vacationButton" class="pull-left">
+        <input type="text" ng-model="currentDay.note">
+        <button class="btn btn-warning" ng-click="vacation()">Vacation day</button>
+    </div>
+    <button class="btn btn-primary" ng-click="close()">Close</button>
+</div>

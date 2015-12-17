@@ -1,0 +1,170 @@
+body {
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding-top: 100px;
+    padding-bottom: 42px;
+}
+
+header, footer {
+    position: fixed;
+    margin: 0 auto;
+    color: #FFF;
+    background-color: #E1E5E8;
+    width: 100%;
+    z-index: 999;
+    text-align: center;
+}
+
+header {
+    top: 0;
+}
+
+footer {
+    bottom: 0;
+    background-color: #E1E5E8;
+}
+
+#copyright {
+    margin: 0 auto;
+    padding: 4px 0;
+    font-size: 0.9em;
+    background-color: #E1E5E8;
+    color: #000000;
+
+}
+
+#title {
+    float: left;
+    padding: 12px 0;
+    font-size: 2em;
+}
+
+#loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: white;
+    opacity: .8;
+}
+
+#spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -33px;
+    margin-top: -33px;
+}
+
+.personClass {
+    float: left;
+    width: 1160px;
+    height: 80px;
+    margin: 8px;
+    padding: 8px;
+    /*border: 1px solid blue;*/
+    /*border-radius: 6px;*/
+    background-color: #E1E5E8;
+}
+
+.personImage {
+    float: left;
+    margin-right: 12px;
+}
+
+.personName {
+    font-size: 1.5em;
+}
+
+.personRole {
+    font-size: 1.1em;
+}
+
+.modal-dialog {
+    width:30%;
+}
+
+.grid {
+    padding: 4px 0;
+    background-color: #ececec;
+}
+.grid:nth-child(even) {
+    background-color: #dedede;
+}
+
+.diary {
+    float: right;
+    width: 690px;
+    margin-top: 12px;
+    border: solid 1px silver;
+    display: table;
+}
+
+.dayBody {
+    float: left;
+    margin: 4px;
+    padding: 0;
+    width: 90px;
+    height: 90px;
+    border-radius: 8px;
+}
+
+.dayHeader {
+    width: 100%;
+    padding: 4px;
+    display: table;
+}
+
+.box_workday { border: 2px solid blue; }
+.box_vacation { border: 2px solid red; }
+.box_weekend { border: 2px solid #FC6; }
+.box_past { border: 2px solid white; }
+.box_future { border: 2px solid grey; }
+.box_empty { border: 2px solid silver; }
+
+.workday { background-color: blue; }
+.vacation { background-color: red; }
+.weekend { background-color: #FC6; }
+.past { background-color: white; }
+.future { background-color: grey; }
+.empty { background-color: silver; }
+
+.dayDate {
+    color: white;
+    font-weight: bold;
+    float: left;
+}
+
+.dayLink {
+    color: white;
+    float: right;
+}
+
+.time {
+    margin: 8px auto;
+    font-size: 2em;
+    color: #666;
+    text-align: center;
+}
+
+td {
+    margin: 2px;
+    padding: 4px;
+    font-size: 0.9em;
+}
+
+.app-modal-window .modal-dialog {
+    width: 900px;
+}
+
+.modal-header {
+    background-color: #369;
+    color: white;
+}
+
+.rowForm {
+    margin: 8px 0;
+}

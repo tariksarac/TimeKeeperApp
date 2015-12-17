@@ -1,0 +1,58 @@
+
+
+<div class="container">
+
+
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+                <h3 class="modal-title">{{doing}}</h3>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div>
+                    <p>Team: <input type="text" ng-model="edit.name"/><img ng-src="images/{{ edit.name }}.png"></p>
+                    <p>Team Size:{{edit.size}}</p>
+                </div>
+                <table class="table table-striped">
+                    <tr>
+
+                        <th>Id</th>
+                        <th>Role name</th>
+
+                    </tr>
+                    <tr ng-repeat="osoba in members.members | orderBy:'id'">
+                        <td>{{osoba.id}}</td>
+                        <td><a href="#/persons"  ng-click="cancel();  modalUpdate('md',person) ;editPerson(person)">{{osoba.firstName}}</a> </td>
+
+                    </tr>
+                </table>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok();">Save</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+
+    <h3><strong>Teams</strong></h3>
+    <div class="row" style="padding: 3px;">
+        <button class="btn btn-success pull-right" ng-click="clearData(); modalUpdate('md')">Add new team!</button>      
+    </div>
+
+	<table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Team name</th>
+			<th>Team size</th>
+            <th class="pull-right">Option</th>
+        </tr>
+        <tr ng-repeat="team in teams | orderBy:'id'">
+            <td>{{team.id}}</td>
+            <td><a href="#/teams" ng-click="editTeam(team); modalUpdate('md')">{{team.name}}</a> </td>
+			<td>{{team.size}}</td>
+            <td><span ng-if="team.size == 0"><div class="pull-right"><a href="#/teams" ng-click="deleteObj(team)"/><img src="images/del.png"/></div></span></td>
+        </tr>
+    </table>
+    </div> 
+</div>

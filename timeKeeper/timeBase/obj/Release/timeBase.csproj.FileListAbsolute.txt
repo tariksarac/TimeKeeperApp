@@ -1,0 +1,12 @@
+C:\Projects\timeKeeper\timeBase\bin\Release\timeBase.dll.config
+C:\Projects\timeKeeper\timeBase\bin\Release\timeBase.dll
+C:\Projects\timeKeeper\timeBase\bin\Release\timeBase.pdb
+C:\Projects\timeKeeper\timeBase\bin\Release\EntityFramework.dll
+C:\Projects\timeKeeper\timeBase\bin\Release\EntityFramework.SqlServer.dll
+C:\Projects\timeKeeper\timeBase\bin\Release\EntityFramework.xml
+C:\Projects\timeKeeper\timeBase\bin\Release\EntityFramework.SqlServer.xml
+C:\Projects\timeKeeper\timeBase\obj\Release\timeBase.csprojResolveAssemblyReference.cache
+C:\Projects\timeKeeper\timeBase\obj\Release\timeBase.Migrations.InitialCreate.resources
+C:\Projects\timeKeeper\timeBase\obj\Release\timeBase.csproj.GenerateResource.Cache
+C:\Projects\timeKeeper\timeBase\obj\Release\timeBase.dll
+C:\Projects\timeKeeper\timeBase\obj\Release\timeBase.pdb

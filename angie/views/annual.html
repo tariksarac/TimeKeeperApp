@@ -1,0 +1,29 @@
+<div class="pull-left">
+    <h2>Annual report / {{ year }}</h2>
+</div>
+<div class="pull-right">
+    <div class="btn-group">
+        <div class="btn btn-default" ng-click="change_year(2015)">2015</div>
+        <div class="btn btn-default" ng-click="change_year(2014)">2014</div>
+        <div class="btn btn-default" ng-click="change_year(2013)">2013</div>
+        <div class="btn btn-default" ng-click="change_year(2012)">2012</div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<hr>
+
+    <table class="table table-striped">
+        <thead class="table-bordered">
+        <th class="col-sm-2">Project</th>
+        <th class="col-sm-1" ng-repeat="month in months">{{ month.name }}</th>
+        <th class="col-sm-2">Total</th>
+        </thead>
+        <tbody ng-repeat="dataRow in annual.itemList">
+        <td class="col-sm-2">{{ dataRow.projectName}}</td>
+        <td class="col-sm-1" ng-repeat="a in range(12) track by $index">{{ dataRow.monthlyHours[$index]}}</td>
+        <th class="col-sm-2">{{ dataRow.totalHours}}</th>
+
+        </tbody>
+    </table>
+
+

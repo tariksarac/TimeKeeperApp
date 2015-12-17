@@ -1,0 +1,73 @@
+
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+       <h3 class="modal-title">{{doing}}</h3>
+    </div>
+
+    <div class="modal-body">
+       <form>
+           <p><input type="text" placeholder="First Name" ng-model="person.firstName"><img class="pull-right" ng-src="images/People/{{ person.firstName }}.jpg"/></p>
+           <p><input type="text" placeholder="Last Name" ng-model="person.lastName"></p>
+           <p><input type="text" placeholder="e-Mail" ng-model="person.email"></p>
+           <p><input type="text" placeholder="Phone" ng-model="person.phone"></p>
+
+           <p>Team: <select ng-options="team.id as team.name for team in teams" ng-model="person.teamId"></select></p>
+           <p>Role: <select ng-options="role.id as role.name for role in roles" ng-model="person.roleId"></select></p>
+       </form>
+    </div>
+
+    <div class="modal-footer">
+       <button class="btn btn-primary" ng-click="ok(person);">Save</button>
+       <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+
+<div class="container">
+    <div>
+
+       <h3>People</h3>
+
+
+          <div class="row" style="padding: 10px; padding-top: 10px">
+
+              <div class="pull-right">
+                  <button class="btn btn-success pull-right" ng-click="clearData(person); modalUpdate('md',person)">Add new person</button>
+              </div>
+          </div>
+
+
+
+    <div class="clearfix"></div>
+
+
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Person name</th>
+            <th>Person role in team</th>
+            <th class="pull-right">Option</th>
+        </tr>
+        <tr ng-repeat="person in people | orderBy:'Id'">
+            <td>{{person.id}}</td>
+            <td><a href="#/persons" ng-click="editPerson(person); modalUpdate('md',person)">{{ person.firstName}} {{ person.lastName }}</a></td>
+            <td>{{ person.role }} @ {{ person.team }}</td>
+            <td><div class="pull-right"><a href="#/persons" ng-click="deletePerson(person)"/><img src="images/del.png"/></div></td>
+        </tr>
+    </table>
+
+
+    <div class="pagination">
+        <div class="row">
+            <div class="col-sm-offset-3">
+
+                  <pagination boundary-links="true" total-items="totalItems" ng-model="currentPage"
+                  class="pagination-sm" ng-change="pageChanged(currentPage)">
+                  </pagination>
+
+            </div>
+       </div>
+   </div>
+
+   </div>
+</div>

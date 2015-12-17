@@ -1,0 +1,57 @@
+
+<div class="container">
+    <script type="text/ng-template" id="myModalContent.html">
+           <div class="modal-header">
+                       <h3 class="modal-title">{{doing}}</h3>
+           </div>
+           <div class="modal-body">
+                <form>
+                    <p>Role: <input type="text" ng-model="edit.name"/><img ng-src="images/{{ edit.name }}.jpg"></p>
+                    <p>Role Size:</p>     {{edit.size}}
+                </form>
+               <table class="table table-striped">
+                   <tr>
+
+                       <th>Id</th>
+                       <th>Role name</th>
+
+
+                   </tr>
+                   <tr ng-repeat="osoba in members.members | orderBy:'id'">
+                       <td>{{osoba.id}} </td>
+                       <td><a href="#/persons" ng-click="cancel();  modalUpdate('md',person) ;editPerson(person)">{{osoba.firstName}}</a> </td>
+
+                   </tr>
+               </table>
+           </div>
+           <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="ok();">Save</button>
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+           </div>
+    </script>
+
+
+
+    <h3><strong>Roles</strong></h3>
+    <div class="row" style="padding: 3px;">
+        <button class="btn btn-success pull-right" ng-click="clearData(); modalUpdate('md')">Add new role!</button>
+    </div>
+	
+	
+	<table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Role name</th>
+			<th>Role size</th>
+            <th class="pull-right">Option</th>
+        </tr>
+        <tr ng-repeat="role in roles | orderBy:'id'">
+            <td>{{role.id}}</td>
+            <td><a href="#/roles" ng-click="editRole(role); modalUpdate('md')">{{role.name}}</a> </td>
+			<td>{{role.size}}</td>
+            <td><span ng-if="role.size == 0"><div class="pull-right"><a href="#/roles" ng-click="deleteObj(role)"/><img src="images/del.png"/></div></span></td>
+        </tr>
+    </table>
+</div>
+
+

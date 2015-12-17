@@ -1,0 +1,14 @@
+<h2>Status for {{ month }} / {{ year }}</h2>
+
+<div class="pull-left" style="border:1px solid blue; margin: 12px 6px; padding: 8px">
+    <div id="gauge_div1" class="pull-left"></div>
+    <div id="gauge_div2" class="pull-left"></div>
+</div>
+<div id="colum_div" class="pull-left" style="border:1px solid blue; margin: 12px 6px; padding: 8px"></div>
+<div id="chart_div" class="pull-left" style="border:1px solid blue; margin: 12px 6px; padding: 8px"></div>
+<div style="clear:both"></div>
+
+<div class="btn-group" ng-repeat="team in dashboard.teamYear" style="margin: 0 6px;">
+    <button type="button" class="btn btn-primary" ng-click="showTeam($index)">{{ team.team }}</button>
+</div>
+<div id="bar_div" class="pull-left" style="border:1px solid blue; margin: 12px 6px; padding: 8px"></div>

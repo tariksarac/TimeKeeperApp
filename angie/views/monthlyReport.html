@@ -1,0 +1,41 @@
+<div class="row"><br>
+    <div class="col-sm-2">
+
+        <br>
+        <select class="form-control btn-theme" ng-options="month as month.name for month in monthsToShow" ng-model="selectedMonth" ng-change="monthIsChanged()"></select>
+
+    </div>
+    <div class="col-sm-7 col-sm-offset-1">
+        <h2 class="mytext"> Report for: {{selectedMonth.name}}/{{currentYear}}</h2>
+    </div>
+    <div class="pull-right">
+        <div class="btn-group">
+            <div class="btn btn-default" ng-click="change_year(2015)">2015</div>
+            <div class="btn btn-default" ng-click="change_year(2014)">2014</div>
+            <div class="btn btn-default" ng-click="change_year(2013)">2013</div>
+            <div class="btn btn-default" ng-click="change_year(2012)">2012</div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-sm-2">
+        <button type="button" class="btn btn-lg btn-theme">
+            <span class="glyphicon glyphicon-print"></span> Print
+        </button>
+    </div>
+</div><br><br>
+
+
+<table class="table table-striped">
+    <thead class="table-bordered">
+    <th class="col-sm-2">Employee</th>
+    <th class="col-sm-1" ng-repeat="proj in monthlyReport.people[0].projects">{{ proj.project}}</th>
+    <th class="col-sm-2">Total</th>
+    </thead>
+    <tbody ng-repeat="person in monthlyReport.people">
+    <td class="col-sm-2"> {{person.person}}</td>
+    <td class="col-sm-1" ng-repeat="a in range(numberOf) track by $index">{{ person.projects[$index].hours}}</td>
+    <th class="col-sm-2">{{person.totalHours}}</th>
+
+    </tbody>
+</table>
+

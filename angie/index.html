@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html ng-app="timeKeeper">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/site.css">
+
+    <script src="libraries/angular.min.js"></script>
+    <script src="libraries/angular-route.min.js"></script>
+    <script src="libraries/angular-cookies.min.js"></script>
+    <script src="libraries/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script>
+        google.load('visualization', '1.0', {'packages':['corechart', 'gauge', 'bar']});
+    </script>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/loginCtrl.js"></script>
+    <script src="scripts/controllers/mainCtrl.js"></script>
+    <script src="scripts/controllers/personCtrl.js"></script>
+    <script src="scripts/controllers/projectCtrl.js"></script>
+    <script src="scripts/controllers/teamCtrl.js"></script>
+    <script src="scripts/controllers/roleCtrl.js"></script>
+    <script src="scripts/controllers/diaryCtrl.js"></script>
+    <script src="scripts/controllers/annualCtrl.js"></script>
+    <script src="scripts/controllers/dashboardCtrl.js"></script>
+    <script src="scripts/controllers/monthlyCtrl.js"></script>
+    <script src="scripts/controllers/personalCtrl.js"></script>
+    <script src="scripts/directives/diaryDirective.js"></script>
+    <script src="scripts/services/dataService.js"></script>
+    <script src="scripts/services/loginService.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap.css.map">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="styles/main.css">-->
+    <link rel="stylesheet" href="styles/site.css">
+    <script src="scripts/services/dataService.js"></script>
+</head>
+<body>
+
+
+<header ng-show="authenticated">
+    <div class="container">
+        <div id="title" style="margin-top: 5px;">
+            <a href="#/main"><img src="images/logo.png" align="middle" alt="logo"></a>
+        </div>
+        <form class="navbar-form navbar-left" role="search" style="margin-top: 24px;">
+        <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-primary">Go</button>
+
+        </form>
+
+        <div class="pull-right" style="margin-top: 24px;">
+
+            <a class="btn btn-primary" href="#/diary">Time evidence</a>
+            <div class="btn-group" dropdown>
+                <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>Database <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#/projects">Projects</a></li>
+                    <li><a href="#/teams">Teams</a></li>
+                    <li><a href="#/roles">Roles</a></li>
+                    <li><a href="#/persons">People</a></li>
+                </ul>
+            </div>
+            <div class="btn-group" dropdown>
+                <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                    Reports <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#/annual">Annual</a></li>
+                    <li><a href="#/monthly">Monthly</a></li>
+                    <li><a href="#/personal">Personal</a></li>
+                    <li><a href="#/dashboard">Dashboard</a></li>
+                </ul>
+            </div>
+            <div class="btn-group" dropdown>
+                <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
+                    <span class="glyphicon glyphicon-user"></span> {{ currentUser.fullName }} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Profile</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container" ng-view style="align-content: center"></div>
+<footer ng-show="authenticated">
+    <div id="copyright">Copyright &copy; 2015 by "Tarik"</div>
+</footer>
+
+<div id="loader" ng-show="showLoader">
+    <img id="spinner" src="images/spinner.gif" />
+</div>
+
+</body>
+
+</html>
+
+
+<!--<header ng-show="authenticated">-->
+
+<!--<nav class="navbar navbar-default ">-->
+<!--<div class="container">-->
+<!--<div class="navbar-header">-->
+<!--<a class="navbar-brand" href="#/main"><img src="images/logo.png" /></a>-->
+
+<!--<form class="navbar-form navbar-left" role="search">-->
+<!--<div class="form-group">-->
+<!--<input type="text" class="form-control" placeholder="Search">-->
+<!--</div>-->
+<!--<button type="submit" class="btn btn-primary">Go</button>-->
+
+<!--</form>-->
+<!--</div>-->
+<!--<div>-->
+
+
+
+
+<!--<ul class="nav navbar-nav navbar-right">-->
+
+<!--<li><a href="#/diary">Time evidence</a></li>-->
+
+<!--<li class="dropdown" dropdown on-toggle="toggled(open)">-->
+<!--<a class="dropdown-toggle" dropdown-toggle role="button" aria-expanded="false" href="#">-->
+<!--Database<span class="caret"></span></a>-->
+<!--<ul class="dropdown-menu" role="menu">-->
+<!--<li><a href="#/projects">Projects</a></li>-->
+<!--<li><a href="#/teams">Teams</a></li>-->
+<!--<li><a href="#/roles">Roles</a></li>-->
+<!--<li><a href="#/persons">People</a></li>-->
+<!--<li>-->
+<!--</ul>-->
+<!--</li>-->
+
+
+<!--<li class="dropdown" dropdown on-toggle="toggled(open)">-->
+<!--<a class="dropdown-toggle" dropdown-toggle role="button" aria-expanded="false" href="#">-->
+<!--Reports<span class="caret"></span></a>-->
+<!--<ul class="dropdown-menu" role="menu">-->
+<!--<li><a href="#/personal">Personal</a></li>-->
+<!--<li><a href="#/monthly">Monthly</a></li>-->
+<!--<li><a href="#/annual">Annual</a></li>-->
+<!--<li><a href="#/dashboard">Dashboard</a></li>-->
+<!--</ul>-->
+<!--</li>-->
+
+
+
+<!--<li class="dropdown" dropdown on-toggle="toggled(open)">-->
+<!--<a style="color: royalblue" class="dropdown-toggle" dropdown-toggle role="button" aria-expanded="false" href="#">-->
+<!--{{currentUser.fullName}}<span class="caret"></span></a>-->
+<!--<ul class="dropdown-menu" role="menu">-->
+<!--<li><a href="#/profile">Profile</a></li>-->
+<!--<li><a href="#/logout">Logout</a></li>-->
+
+
+<!--</ul>-->
+<!--</li>-->
+
+
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--</nav>-->
+<!--<hr>-->
+<!--</header>-->
+

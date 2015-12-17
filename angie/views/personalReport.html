@@ -1,0 +1,68 @@
+<div class="mainContainer">
+
+    <div class="row">
+        <div class="pull-left">
+            <h1 class="personName">{{monthData.person}}</h1>
+        </div>
+        <div ng-show="isTeamLead" class="pull-right" style="margin-left:24px">
+            Team: <select class="btn btn-theme"
+                          ng-model="memberId"
+                          ng-options="member.id as member.firstName + ' ' + member.lastName for member in members"
+                          ng-change="chgMember(memberId)"></select>
+        </div>
+
+        <div class="pull-right">
+            Month: <select class="btn btn-theme"
+                           ng-model="selMonth"
+                           ng-options="months.indexOf(selMonth) as selMonth for selMonth in months"
+                           ng-change="chgMonth(selMonth)"></select>
+        </div>
+
+    </div>
+    <br>
+    <div class="row">
+        <div class="pull-right" style="margin-right: 70px; margin-top: 50px;padding:20px; border-radius: 7px; box-shadow: 3px 3px 3px #23527c; border: 1px solid #23527c">
+            <h1 class="monthyear pull-left">{{monthData.month}}/{{monthData.year}}</h1>
+            <br>
+            <br>
+            <div><hr style="width: 98%;"></div>
+
+            <div class="info">
+                <h4> Working hours: {{ monthData.totalHours }}
+                    <br>
+                    <br>
+                    PTO days: {{ monthData.ptoDays }}
+                </h4>
+            </div>
+        </div>
+        <div class="pull-left" style="margin-left: 20px">
+
+            <div class="row seven-cols days">
+                <span class="daysinweek" ng-repeat="day in daysInWeek"> {{day.name}} </span>
+            </div>
+
+            <div class="row seven-cols">
+                <div class="diary">
+                    <div ng-repeat="day in monthData.diary">
+                        <a href="" ng-click= "view(day)">
+                            <div class="dayBody box_{{ day.type }}">
+                                <div class="dayHeader {{ day.type }}" ng-show="day.type != 'past'">
+                                    <div class="dayDate">{{ day.day }}</div>
+                                    <div class="dayLink">
+                                    </div>
+                                </div>
+                                <div class="time" ng-if="day.time!='0:00'">{{ day.time }}</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="pull-right">
+
+        </div>
+    </div>
+</div>
+

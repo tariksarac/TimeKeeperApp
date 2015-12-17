@@ -1,0 +1,22 @@
+<div class="modal-header" style="display:table; width:100%;background-color: #18bc9c">
+    <h3 class="modal-title pull-left">{{ currentMonth.person }}</h3>
+    <h3 class="modal-title pull-right">{{ currentDay.date }}</h3>
+</div>
+
+<div class="modal-body">
+    <div ng-repeat="detail in currentDay.details">
+        <detail>
+            <div class="row"style="padding-left: 5px">
+                <h4> Project: {{detail.project}} </h4>
+                <hr>
+                <h4>Hours: {{detail.time}}</h4>
+                <hr>
+                <h4>Note:{{detail.note}}</h4>
+            </div>
+        </detail>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="close()">Close</button>
+</div>
